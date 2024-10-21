@@ -19,3 +19,53 @@ app.get('/hello/:name', (req, res) => {
     const name = req.params.name;
     res.send(`Hello ${name}`);
 });
+
+app.get('/api/movies', (req, res) => {
+    const movies = [
+        {
+            "Title": "Avengers: Infinity War",
+            "Year": "2018",
+            "imdbID": "tt4154756",
+            "Type": "movie",
+            "Poster": "https://example.com/poster1.jpg"
+        },
+        {
+            "Title": "Captain America: Civil War",
+            "Year": "2016",
+            "imdbID": "tt3498820",
+            "Type": "movie",
+            "Poster": "https://example.com/poster2.jpg"
+        },
+        {
+            "Title": "World War Z",
+            "Year": "2013",
+            "imdbID": "tt0816711",
+            "Type": "movie",
+            "Poster": "https://example.com/poster3.jpg"
+        }
+    ];
+    res.json({ movies });
+});
+
+const path = require('path');
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/name', (req, res) => {
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.post('/name', (req, res) => {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    res.send(`Hello ${firstname} ${lastname}`);
+});
+

@@ -1,11 +1,17 @@
-const MovieItem = (props)=>{
-    return(
+// MovieItem component that receives movie details through props
+const MovieItem = (props) => {
+    return (
         <div>
-            <h2>{props.myMovie.title}</h2>
+            {/* Displaying the movie title */}
+            <h2>{props.myMovie.Title}</h2>
+
+            {/* Displaying the movie release year */}
             <p>{props.myMovie.Year}</p>
-            <img src={props.myMovie.Poster}></img>
+
+            {/* Displaying the movie poster image */}
+            <img src={props.myMovie.Poster} alt={`${props.myMovie.Title} poster`}></img>
         </div>
     );
 }
 
-export default MovieItem;
+export default MovieItem; // Exporting MovieItem so it can be used in other parts of the app
